@@ -31,9 +31,18 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # env variables
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
+# Swagger tooling for Rails API's
+gem 'rswag'
+gem 'rswag-api'
+gem 'rswag-ui'
+gem 'rspec-rails'
+gem 'rswag-specs'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do
