@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tickets
   resources :venues
   devise_for :users
   Healthcheck.routes(self)
