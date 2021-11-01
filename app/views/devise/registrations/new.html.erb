@@ -20,6 +20,10 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+  
+  <%= collection_select(
+  :user, :role_id, Role.all, :id, :name, { prompt: true }
+) %>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
