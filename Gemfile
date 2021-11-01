@@ -40,6 +40,8 @@ gem 'rswag-specs'
 
 gem 'devise'
 
+gem 'aasm'
+
 #Rails::Healthcheck
 gem 'rails-healthcheck'
 
