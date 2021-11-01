@@ -1,0 +1,31 @@
+<%= form_with(model: venue) do |form| %>
+  <% if venue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
+
+      <ul>
+        <% venue.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :event_id %>
+    <%= form.select(:event_id, Event.all.collect {|p| [ p.name, p.id ] }, { include_blank: true })%>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
