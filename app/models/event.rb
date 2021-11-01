@@ -1,13 +1,11 @@
 class Event < ApplicationRecord
-  has_many :venues, dependent: :destroy
-    
   include AASM
+  has_many :venues, dependent: :destroy
 
   aasm :column => 'state' do
       state :published, initial: true
       state :pre_sold, :sold, :cancelled, :completed
 
-      
     event :presale do
       transitions from: :published, to: :pre_sold
     end
@@ -23,7 +21,6 @@ class Event < ApplicationRecord
     event :complete do
       transitions from: [:pre_sold, :sold], to: :completed
     end
-    
   end
   
 end

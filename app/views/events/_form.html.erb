@@ -25,6 +25,11 @@
     <%= form.label :end_date %>
     <%= form.date_select :end_date %>
   </div>
+  
+  <div class="field">
+    <%= form.label :state %>
+    <%= select_tag(:state, options_for_select( Event.aasm.states_for_select )) %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

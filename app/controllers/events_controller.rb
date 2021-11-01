@@ -26,6 +26,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        puts change_status(@event.state)
         format.html { redirect_to @event, notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
@@ -39,6 +40,8 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
+        state = params[:state]
+        change_status( state )
         format.html { redirect_to @event, notice: "Event was successfully updated." }
         format.json { render :show, status: :ok, location: @event }
       else
@@ -65,6 +68,22 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :start_date, :end_date)
+      params.require(:event).permit(:name, :start_date, :end_date, :state)
     end
+    
+    def change_status(state)
+      case state 
+      when "pre_sold"
+        @event.presale!
+      when "sold"
+        @event.sell!
+      when "cancelled"
+        @event.cancel!
+      when "completed"
+        @event.complete!
+      else
+        puts "default"
+      end
+    end
+    
 end
