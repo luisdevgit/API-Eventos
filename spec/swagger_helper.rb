@@ -24,10 +24,10 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://cd820c972fba444aafc8ae55145046b8.vfs.cloud9.us-east-1.amazonaws.com',
+          url: 'https://secure-spire-30368.herokuapp.com/',
           variables: {
             defaultHost: {
-              default: 'https://cd820c972fba444aafc8ae55145046b8.vfs.cloud9.us-east-1.amazonaws.com/'
+              default: 'https://secure-spire-30368.herokuapp.com/'
             }
           }
         }
