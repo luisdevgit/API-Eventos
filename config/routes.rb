@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+ 
+  
   resources :roles
   resources :tickets
   resources :venues
   devise_for :users
+  resources :users
+  
   Healthcheck.routes(self)
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'

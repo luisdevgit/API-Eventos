@@ -8,8 +8,11 @@ class Ability
       can :manage, :all
     elsif user.organizer?
       can :manage, Event
+      can :read, Venue
+      can :manage, Ticket
     elsif user.buyer?
       can :read, Ticket
+      can :read, Venue
     end
     # Define abilities for the passed in user here. For example:
     #

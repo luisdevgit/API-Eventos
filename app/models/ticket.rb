@@ -1,6 +1,7 @@
 class Ticket < ApplicationRecord
   belongs_to :venue
   before_validation :venue_capacity
+  before_save :auto_price
   
   private
    
@@ -13,6 +14,10 @@ class Ticket < ApplicationRecord
       else 
           errors.add(:venue_capacity, 'excede la capacidad de la sede.')
       end
+  end
+  
+  def auto_price
+    self.price = 0
   end
   
 end
