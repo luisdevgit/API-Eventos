@@ -7,7 +7,7 @@ Rails.application.configure do
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-  config.hosts << "cd820c972fba444aafc8ae55145046b8.vfs.cloud9.us-east-1.amazonaws.com"
+  config.hosts << "https://secure-spire-30368.herokuapp.com/"
 
   # Do not eager load code on boot.
   config.eager_load = false
