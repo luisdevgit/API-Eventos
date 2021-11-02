@@ -59,4 +59,35 @@ describe 'Events API' do
       end
     end
   end
+  
+  path '/events' do
+
+    get 'Retrieves a event' do
+      tags 'Events'
+      produces 'application/json', 'application/xml'
+      parameter name: :id, in: :path, type: :string
+
+      response '200', 'blog found' do
+        schema type: :object,
+          properties: {
+            id: { type: :integer },
+            name: { type: :string }
+          },
+          required: [ 'id', 'name' ]
+
+        let(:id) { Event.create(name: 'foo').id }
+        run_test!
+      end
+
+      response '404', 'blog not found' do
+        let(:id) { 'invalid' }
+        run_test!
+      end
+
+      response '406', 'unsupported accept header' do
+        let(:'Accept') { 'application/foo' }
+        run_test!
+      end
+    end
+  end
 end
